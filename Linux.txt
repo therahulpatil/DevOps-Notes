@@ -1,0 +1,329 @@
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+What is Linux Operating System: 
+
+Linux is a powerful and flexible family of operating systems.
+Linux distribution is an operating system that is made up of a collection of software based on Linux kernel
+Around 600 + Linux Distributions are available and some of the popular Linux distributions are: 
+
+-MX Linux
+-Manjaro
+-Linux Mint
+-elementary
+-Ubuntu
+-Debian
+-Solus
+-Fedora
+-openSUSE
+-Deepin
+
+Kernel: 
+Kernel is the core of the Linux based operating system. 
+It virtualizes the common hardware resources of the computer to provide each process with its virtual resources.
+
+Shell:
+The shell is the user interface of the Linux Operating System. 
+It allows users to interact with the system by entering commands, 
+which the shell interprets and executes. The shell serves as a bridge between the user and the kernel, 
+forwarding the user’s requests to the kernel for processing.
+
+Advantages of Linux:
+The main advantage of Linux is it is an open-source operating system.
+Linux is more secure than any other operating system.
+The software updates in Linux are easy and frequent.
+
+___________________________________________________________________________________________________________________________________________
+
+___________________________________________________________________________________________________________________________________________
+			Linux Commands
+___________________________________________________________________________________________________________________________________________
+
+___________________________________________________________________________________________________________________________________________
+
+1)Create a file:
+
+$ cat > filename     : Create file and open in terminal to write
+			use ctrl+d to exit after write
+$ touch filename     : Create empty file
+$ cat > .filename    : Used to create hidden file
+$ touch .filename    : Used to create hidden file
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+2)Remove File :
+
+$ rm filename	: Remove file 
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+3)Create Directory :
+
+Directory in linux is same as folder in windows which stores more directories of files.
+
+$ mkdir dirname    : make directory
+$ mkdir .dirname   : make hidden directory
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+4)Remove Directory:
+
+$ rmdir dirname  : Remove dir iff it is empty
+$ rm -r dirname	 : Remove dir and files inside that dir also. (remove recursively) 
+
+*Color of files and directories are diffrent*
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+5)Read content in file : Displays content of file on terminal
+
+$ cat filename
+$ cat < filename
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+6)View files or List files : List command
+
+$ ls     	: List files and directories
+$ ls -a  	: List all files included hidden files
+$ ls -l  	: List files with details like permissions,date of creation
+$ ls -la 	: list all files with details
+$ ls -lt 	: List files according time stamp in assending order.
+
+-rw-r--r-- 1 PCS 197121 0 Apr 11 19:47 f1
+drwxr-xr-x 1 PCS 197121 0 Apr 11 19:47 f2/
+
+First dash '-' represent f1 is a file and 'd' represent f2 is a directory.
+
+
+-rw-r--r-- 	1	 PCS	 197121	 	0		 Apr 11 19:47 		f1
+permissions    Links    Owner    Group        Size in bytes      last date of modify   File name
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+7)Other Commands:
+
+$ pwd 		  : Print Working Directory. Points current path
+$ cd dirname	  : change directory - one dir to other
+$ cd ..  	  : Goto parent directory
+$ history 	  : List history of privious command executed
+$ date 		  : Print current date and time - Thu Apr 11 20:16:08 IST 2024
+$ cal		  : print calender of current month.
+$ head -5 file1	  : print first 5 lines of file1.
+$ tail -5 file1   : print last 5 lines of file1.
+$ wc file1	  : word count print lines,words,charactores of file with file name
+$ wc -l file1     : print number of lines  (-w : word count, -c charactores count)
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+8)File /dir -copy and move :
+
+$ cp file1 file2   : Copy data of file1 to file2
+		    if file2 does not exist it creates automaticaly
+
+$ cp file1 .file1  : Copy data of file1 to hidden file1
+		    if .file1 does not exist it creates automaticaly
+
+$ mv file1 file2   : Move data of file1 to file2
+		    if file2 does not exist it creates automaticaly
+		    file1 is get deleted (also used for file rename )
+
+$ mv file1 .file1  : Move data of file1 to .file1
+		    if .file1 does not exist it creates automaticaly
+		    file1 is get deleted 
+
+$ mv dir1 .dir1   : make dir1 as hidden directory
+
+
+file1 and .file1 - both are two diffrent files/dir.
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+9) Users
+
+$ - normal user
+# - root user
+
+$ whoami	: print current user
+$ su username	: switch username 
+$ su root	: switch to root user (requried password)
+$ sudo 		: super user do - use to run command by normal user because he has less permissions.
+$ sudo su root	: switch to root user (not requried password)
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+10) File Permissions:
+
+There are three types of file permissions to three types of users.
+
+_________________________________________________________
+Permissions	|	alphabetical 	|     Numrical
+_________________________________________________________
+ read		|	  r		|     	4
+ write		|	  w		|	2
+ execute	|	  x		|	1
+ no permission  |         -             |       0
+_________________________________________________________
+
+____________________________
+Users	   	Notations
+____________________________
+ owner		   u
+ group		   g
+ other		   o
+____________________________
+
+
+   d	 rwx 	 rwx 	rwx    1 PCS 197121 0 Apr 11 19:47 f1
+	owner 	group	other
+
+
+Change file permissions:
+
+$ chmod permission filename : The chmod command in Linux is used to change the permissions of a file or directory.
+          		      It stands for "change mode". With chmod, you can add or remove permissions for 
+				the owner, group, and others, or set permissions explicitly
+
+
+
+
+* Numerical Notations : 
+__________________________________________________________
+0	No permission				0
+__________________________________________________________
+1	Execute					1
+__________________________________________________________
+2	Write					2
+__________________________________________________________
+3	Write and Execute			1+2
+__________________________________________________________
+4	Read					4
+__________________________________________________________
+5	Read and Execute			4+1
+__________________________________________________________
+6	Read and Write				4+2
+__________________________________________________________
+7	Read Write Execute 			4+2+1
+	(all permissions)
+__________________________________________________________
+
+
+$ chmod abc file1
+
+a-permission for user
+b-permission for group
+c-permission for other
+
+
+$ chmod 764 file1   : all per to owner,read and write for group,read for other
+$ chmod 777 file1   : All permitions to all users.
+
+
+* Alphabetical Notations :
+
++  : Give permissions
+-  : Remove Permissions
+
+$ chmod o+r file1	: Give read per to others
+$ chmod g-wx file1	: Remove write and execute permission of group
+$ chmod u-x,g-w,o-wx	: other no execute,group no write and other no write,execute permission.
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+11)Pipe command
+
+Pipe represented by the "|" symbol, it allows the output of one command to be used as the input for another command.
+Pipes are used to chain multiple commands together, creating a pipeline of data processing.
+
+$ command1 | command2	: output of command1 is passed as input to command2.
+
+$ date | wc 	        : print word count of date's output
+
+$ date
+Thu Apr 11 22:09:53 IST 2024
+
+$ date | wc
+      1       6      29
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+12)tree command:
+
+The tree command in Linux is used to display the contents of directories in a tree-like format. 
+It recursively lists the contents of directories and subdirectories, showing the hierarchical structure of the file system.
+ 
+$ tree
+ 
+.
+├── d2
+│   └── d3
+├── d4
+│   ├── f5
+│   └── f6
+├── f1
+└── f2
+
+4 directories, 4 files
+
+. = root
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+13)Package Installation : 
+
+Package installation in Linux typically depends on the distribution you're using. 
+-apt (Advanced Package Tool) used by Debian and Ubuntu. 
+-yum used by Red Hat Enterprise Linux (RHEL), CentOS, and Fedora.
+-pacman used by Arch Linux.
+
+-Update Package Lists: Before installing a package, it's a good idea to update the package lists to ensure you get the latest versions:
+$ sudo apt update
+
+
+-Install a Package: Use the apt install command followed by the name of the package you want to install:
+$ sudo apt install package_name
+
+
+-Remove a Package: If you want to remove a package, you can use the apt remove command:
+$ sudo apt remove package_name
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+14) File Editor :
+
+Vim: vim or vi is a powerful and highly configurable text editor that offers advanced features such as 
+syntax highlighting, multiple buffers, and extensive customization options.
+It has a steep learning curve but provides unparalleled efficiency for experienced users.
+
+$ vim filename
+$ vi filename
+
+file is created if it does not exist and open in vim editor.
+Default mode is command mode.
+
+i/insert key - go to insert mode and write into file
+esc key - go to command mode
+:wq	- write/save and quite/exit
+:q!	- exit without save
+
+commands in default mode
+dd 	- delete a line
+yy 	- copy a line
+p 	- paste below
+u 	- undo last change
+Ctrl + r 	- Redo the last undone change.
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
